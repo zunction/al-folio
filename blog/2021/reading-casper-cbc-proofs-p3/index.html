@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Zhangsheng  Lai | Reading Casper CBC proofs - Part 3</title>
+<meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+<!-- Open Graph -->
+
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/jwarby/jekyll-pygments-themes/master/github.css" />
+
+<!-- Styles -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐔</text></svg>">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<link rel="canonical" href="/blog/2021/reading-casper-cbc-proofs-p3/">
+
+<!-- JQuery -->
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+
+<!-- Theming-->
+
+  <script src="/assets/js/theme.js"></script>
+  <!-- Load DarkMode JS -->
+<script src="/assets/js/dark_mode.js"></script>
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73850109-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-73850109-1');
+  </script>
+
+
+
+
+    
+<!-- MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+  </head>
+
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+
+    <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="/">
+       <span class="font-weight-bold">Zhangsheng</span>   Lai
+      </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              about
+              
+            </a>
+          </li>
+          
+          <!-- Blog -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/blog/">
+              blog
+              
+            </a>
+          </li>
+          
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/projects/">
+                projects
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/publications/">
+                publications
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/teaching/">
+                teaching
+                
+              </a>
+          </li>
+          
+          
+          
+            <div class = "toggle-container">
+              <a id = "light-toggle">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+              </a>
+            </div>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+
+    <div class="container mt-5">
+      
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Reading Casper CBC proofs - Part 3</h1>
+    <p class="post-meta">June 5, 2021</p>
+  </header>
+
+  <article class="post-content">
+    <p>Welcome to Part 3 of my reading of Casper CBC proofs and thanks for following along in my journey.
+This is a continuation of my earlier <a href="https://zunction.github.io/blog/2021/reading-casper-cbc-proofs-p1/">Part 1</a> and <a href="https://zunction.github.io/blog/2021/reading-casper-cbc-proofs-p2/">Part 2</a>.</p>
+
+<p>In this episode, we look at protocol state transitions in Definition 2.8 which says:</p>
+
+\[\to : \Sigma \times \Sigma \to \{True, False\}\]
+
+\[\sigma_1 \to \sigma_2 \Leftrightarrow \sigma_1 \subseteq \sigma_2\]
+
+<p>In Coq this is represented by <code class="language-plaintext highlighter-rouge">reach s1 s2</code>, a <code class="language-plaintext highlighter-rouge">Prop</code> statement which is inhabited iff <code class="language-plaintext highlighter-rouge">s1</code> is a subset of <code class="language-plaintext highlighter-rouge">s2</code>.
+One can interpret <code class="language-plaintext highlighter-rouge">reach s1 s2</code> as saying <code class="language-plaintext highlighter-rouge">s2</code> is reachable or can transit from <code class="language-plaintext highlighter-rouge">s1</code>.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="o">(</span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="no">incl</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The next few lemmas prove some basic properties of <code class="language-plaintext highlighter-rouge">reach</code>, like reflexivity, transitivity, and in <code class="language-plaintext highlighter-rouge">reach_union</code> how a state can <code class="language-plaintext highlighter-rouge">reach</code> a union of itself with another state.
+In <code class="language-plaintext highlighter-rouge">reach_morphism</code> it says that if \(\sigma_1 \to \sigma_2\) and \(\sigma_2 = \sigma_3\), then \(\sigma_1 \to \sigma_3\).</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">reach_refl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s</span><span class="w"> </span><span class="no">s</span><span class="pi">.</span><span class="w">
+
+</span><span class="k">Lemma</span><span class="w"> </span><span class="no">reach_trans</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s3</span><span class="pi">.</span><span class="w">
+
+</span><span class="k">Lemma</span><span class="w"> </span><span class="no">reach_union</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">).</span><span class="w">
+
+</span><span class="k">Lemma</span><span class="w"> </span><span class="no">reach_morphism</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">state_eq</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s3</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Next is the definition of a binary estimator defined using inductive types.
+The <code class="language-plaintext highlighter-rouge">binEstimator</code> is estimates a binary consensus value for a given state <code class="language-plaintext highlighter-rouge">sigma</code>.
+Instead of a function which returns a binary consensus given a state, a binary consensus value is estimated by the construction of a <code class="language-plaintext highlighter-rouge">binEstimator</code> term.
+For example for a given <code class="language-plaintext highlighter-rouge">sigma</code>, the term <code class="language-plaintext highlighter-rouge">estimator_one</code> can be constructed  if we can construct a proof which says the weight of the validators estimating <code class="language-plaintext highlighter-rouge">one</code> is greater than the weight of the validators estimating <code class="language-plaintext highlighter-rouge">zero</code>, i.e. <code class="language-plaintext highlighter-rouge">((score zero sigma) &lt; (score one sigma))%R</code>.
+In the last two constructors of <code class="language-plaintext highlighter-rouge">binEstimator</code>, it says that if we have proof that <code class="language-plaintext highlighter-rouge">((score zero sigma) = (score one sigma))%R</code>, then the terms <code class="language-plaintext highlighter-rouge">estimator_both_zero</code> and <code class="language-plaintext highlighter-rouge">estimator_both_one</code> can be constructed.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Inductive</span><span class="w"> </span><span class="no">binEstimator</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">C</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">estimator_one</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w"> </span><span class="o">((</span><span class="no">score</span><span class="w"> </span><span class="no">zero</span><span class="w"> </span><span class="no">sigma</span><span class="o">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">(</span><span class="no">score</span><span class="w"> </span><span class="no">one</span><span class="w"> </span><span class="no">sigma</span><span class="o">))%</span><span class="no">R</span><span class="w"> 
+    </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">binEstimator</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">one</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">estimator_zero</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w"> </span><span class="o">((</span><span class="no">score</span><span class="w"> </span><span class="no">zero</span><span class="w"> </span><span class="no">sigma</span><span class="o">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">(</span><span class="no">score</span><span class="w"> </span><span class="no">one</span><span class="w"> </span><span class="no">sigma</span><span class="o">))%</span><span class="no">R</span><span class="w"> 
+    </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">binEstimator</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">zero</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">estimator_both_zero</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w"> </span><span class="o">((</span><span class="no">score</span><span class="w"> </span><span class="no">zero</span><span class="w"> </span><span class="no">sigma</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="no">score</span><span class="w"> </span><span class="no">one</span><span class="w"> </span><span class="no">sigma</span><span class="o">))%</span><span class="no">R</span><span class="w"> 
+    </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">binEstimator</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">zero</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">estimator_both_one</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w"> </span><span class="o">((</span><span class="no">score</span><span class="w"> </span><span class="no">zero</span><span class="w"> </span><span class="no">sigma</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="no">score</span><span class="w"> </span><span class="no">one</span><span class="w"> </span><span class="no">sigma</span><span class="o">))%</span><span class="no">R</span><span class="w"> 
+    </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">binEstimator</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">one</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">estimator_total</code> lemma then says that for any state <code class="language-plaintext highlighter-rouge">s</code>, we are able to find a binary consensus value <code class="language-plaintext highlighter-rouge">c</code> such that we can construct a term of type <code class="language-plaintext highlighter-rouge">binEstimator s c</code>.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">estimator_total</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">,</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">C</span><span class="o">,</span><span class="w"> </span><span class="no">binEstimator</span><span class="w"> </span><span class="no">s</span><span class="w"> </span><span class="no">c</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Upshot</strong>: <em>a binary consensus value can be estimated for every state.</em></p>
+
+<p>Definition 2.9 describes what it means for two messages to be equivocating, with the \(\perp\) operator to check if two messages are equivocating.</p>
+
+\[\cdot \perp \cdot : M \times M \to \{True,False\}\]
+
+\[m_1 \perp m_2 \Leftrightarrow \left(Sender(m_1) = Sender(m_2)\right) \wedge (m_1 \neq m_2) \wedge \left(m_{3-i} \notin Justification(m_i)\right)~i=1,2\]
+
+<p>The equivocation definition says that two messages are equivocating when the messages are not the same but have the same sender and each message do not include each other in their justifications.
+Using the <code class="language-plaintext highlighter-rouge">equivocating_messages</code> function, it returns <code class="language-plaintext highlighter-rouge">true</code> (<code class="language-plaintext highlighter-rouge">false</code>) if the messages <code class="language-plaintext highlighter-rouge">m1</code> and <code class="language-plaintext highlighter-rouge">m2</code> are (not) equivocating.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">equivocating_messages</span><span class="w"> </span><span class="o">(</span><span class="no">msg1</span><span class="w"> </span><span class="no">msg2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">message</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">bool</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="kr">match</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="no">msg1</span><span class="w"> </span><span class="no">msg2</span><span class="w"> </span><span class="kp">with</span><span class="w">
+    </span><span class="o">|</span><span class="w"> </span><span class="no">left</span><span class="w"> </span><span class="p">_</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="no">false</span><span class="w">
+    </span><span class="o">|</span><span class="w"> </span><span class="p">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kr">match</span><span class="w"> </span><span class="no">msg1</span><span class="o">,</span><span class="w"> </span><span class="no">msg2</span><span class="w"> </span><span class="kp">with</span><span class="w"> </span><span class="o">(</span><span class="no">c1</span><span class="o">,</span><span class="no">v1</span><span class="o">,</span><span class="no">j1</span><span class="o">),</span><span class="w"> </span><span class="o">(</span><span class="no">c2</span><span class="o">,</span><span class="no">v2</span><span class="o">,</span><span class="no">j2</span><span class="o">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w">
+      </span><span class="kr">match</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="no">v1</span><span class="w"> </span><span class="no">v2</span><span class="w"> </span><span class="kp">with</span><span class="w">
+        </span><span class="o">|</span><span class="w"> </span><span class="no">left</span><span class="w"> </span><span class="p">_</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="no">negb</span><span class="w"> </span><span class="o">(</span><span class="no">inb</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="o">(</span><span class="no">hash</span><span class="w"> </span><span class="no">msg1</span><span class="o">)</span><span class="w"> </span><span class="no">j2</span><span class="o">)</span><span class="w"> 
+                     </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="no">negb</span><span class="w"> </span><span class="o">(</span><span class="no">inb</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="o">(</span><span class="no">hash</span><span class="w"> </span><span class="no">msg2</span><span class="o">)</span><span class="w"> </span><span class="no">j1</span><span class="o">)</span><span class="w">
+        </span><span class="o">|</span><span class="w"> </span><span class="no">right</span><span class="w"> </span><span class="p">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="no">false</span><span class="w">
+      </span><span class="kr">end</span><span class="w">
+             </span><span class="kr">end</span><span class="w">
+  </span><span class="kr">end</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To check if a message equivocates with some message in a protocol state, <code class="language-plaintext highlighter-rouge">equivocating_message_state</code> is a boolean predicate which checks if a given message equivocates with some message in a state.
+The <a href="https://coq.inria.fr/library/Coq.Lists.List.html#existsb"><code class="language-plaintext highlighter-rouge">existsb</code></a> helps to check if there is any message in a given <code class="language-plaintext highlighter-rouge">sigma : state</code> which satisfies <code class="language-plaintext highlighter-rouge">equivocating_messages</code>.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">equivocating_message_state</span><span class="w"> </span><span class="o">(</span><span class="no">msg</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">message</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">bool</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="no">existsb</span><span class="w"> </span><span class="o">(</span><span class="no">equivocating_messages</span><span class="w"> </span><span class="no">msg</span><span class="o">).</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here we have a property of protocol states which says if \(\sigma \subseteq \sigma '\) then if there is a message \(m\) which equivocates with some message in \(\sigma\), \(m\) will also equivocate with some message in \(\sigma '\).</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">equivocating_message_state_incl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w"> </span><span class="no">incl</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> 
+  </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">msg</span><span class="o">,</span><span class="w"> </span><span class="no">equivocating_message_state</span><span class="w"> </span><span class="no">msg</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"> 
+    </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">equivocating_message_state</span><span class="w"> </span><span class="no">msg</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The set of equivocating senders (or validators) can be obtained using <code class="language-plaintext highlighter-rouge">equivocating_senders</code>; built from <code class="language-plaintext highlighter-rouge">equivocating_messages</code>.
+Note that the</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">equivocating_senders</span><span class="w"> </span><span class="o">(</span><span class="no">sigma</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">set</span><span class="w"> </span><span class="no">V</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="no">set_map</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="no">sender</span><span class="w"> </span><span class="o">(</span><span class="no">filter</span><span class="w"> </span><span class="o">(</span><span class="kr">fun</span><span class="w"> </span><span class="no">msg</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="no">equivocating_message_state</span><span class="w"> </span><span class="no">msg</span><span class="w"> </span><span class="no">sigma</span><span class="o">)</span><span class="w"> </span><span class="no">sigma</span><span class="o">).</span><span class="w">
+</span></code></pre></div></div>
+<p>The use of <a href="https://coq.inria.fr/library/Coq.Lists.ListSet.html#set_map"><code class="language-plaintext highlighter-rouge">set_map</code></a> on <code class="language-plaintext highlighter-rouge">set V</code> ensures that any element of a set occurs at most once.
+Thus the fact that the list of equivocating sends has no duplicates (<code class="language-plaintext highlighter-rouge">NoDup</code>) is proved in <code class="language-plaintext highlighter-rouge">equivocating_senders_nodup</code> below.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">equivocating_senders_nodup</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w"> </span><span class="no">NoDup</span><span class="w"> </span><span class="o">(</span><span class="no">equivocating_senders</span><span class="w"> </span><span class="no">sigma</span><span class="o">).</span><span class="w">
+</span></code></pre></div></div>
+
+<p>It also follows that if \(\sigma \subseteq \sigma '\) then the set of equivocating senders in \(\sigma\) are contained in the set of equivocating senders in \(\sigma '\), proved in <code class="language-plaintext highlighter-rouge">equivocating_senders_incl</code>.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">equivocating_senders_incl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w"> </span><span class="no">incl</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> 
+  </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">incl</span><span class="w"> </span><span class="o">(</span><span class="no">equivocating_senders</span><span class="w"> </span><span class="no">sigma</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="no">equivocating_senders</span><span class="w"> </span><span class="no">sigma'</span><span class="o">).</span><span class="w">
+</span></code></pre></div></div>
+
+<p>It is important to identify the equivocating senders as the aim is for the protocol to guarantee consensus safety by being tolerant up to \(t\) Byzantine faults, measured by weight of equivocating senders (validators).
+Thus if the threshold is \(t\), then consensus safety can be guaranteed when the weights do not cross the threshold.
+The function <code class="language-plaintext highlighter-rouge">fault_weight_state</code> measures the sum of weights of equivocating senders to determine if it lies within the threshold.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">fault_weight_state</span><span class="w"> </span><span class="o">(</span><span class="no">sigma</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">R</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> 
+  </span><span class="no">sum_weights</span><span class="w"> </span><span class="o">(</span><span class="no">equivocating_senders</span><span class="w"> </span><span class="no">sigma</span><span class="o">).</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The next two lemmas provide results which are used in the proofs of other results below.
+The first lemma <code class="language-plaintext highlighter-rouge">sum_weights_in</code> verifies that if for validator <code class="language-plaintext highlighter-rouge">v</code> and a list of validators <code class="language-plaintext highlighter-rouge">vs</code> such that <code class="language-plaintext highlighter-rouge">v</code> is in the list <code class="language-plaintext highlighter-rouge">vs</code>, the sum of weights of <code class="language-plaintext highlighter-rouge">vs</code> is equal to the weight of  <code class="language-plaintext highlighter-rouge">v</code> added to the sum of weights of <code class="language-plaintext highlighter-rouge">vs</code> without <code class="language-plaintext highlighter-rouge">v</code>.
+The next lemma <code class="language-plaintext highlighter-rouge">sum_weights_incl</code> says that for two list of validators <code class="language-plaintext highlighter-rouge">vs</code> and <code class="language-plaintext highlighter-rouge">vs'</code> such that each list has no duplicates (is a legitimate set) with <code class="language-plaintext highlighter-rouge">vs</code> contained in <code class="language-plaintext highlighter-rouge">vs'</code>, then the sum of weights of <code class="language-plaintext highlighter-rouge">vs</code> is less than or equal to the sum of weights of <code class="language-plaintext highlighter-rouge">vs'</code>.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">sum_weights_in</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="no">vs</span><span class="o">,</span><span class="w"> </span><span class="no">NoDup</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">In</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="no">vs</span><span class="w"> 
+  </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">sum_weights</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="no">weight</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="no">sum_weights</span><span class="w"> </span><span class="o">(</span><span class="no">set_remove</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="no">vs</span><span class="o">))%</span><span class="no">R</span><span class="pi">.</span><span class="w">
+
+</span><span class="k">Lemma</span><span class="w"> </span><span class="no">sum_weights_incl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="no">vs'</span><span class="o">,</span><span class="w"> </span><span class="no">NoDup</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">NoDup</span><span class="w"> </span><span class="no">vs'</span><span class="w"> 
+  </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">incl</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="no">vs'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">(</span><span class="no">sum_weights</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">sum_weights</span><span class="w"> </span><span class="no">vs'</span><span class="o">)%</span><span class="no">R</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Extending the result of <code class="language-plaintext highlighter-rouge">sum_weights_incl</code> to weights of equivocating validators, we have the <code class="language-plaintext highlighter-rouge">fault_weight_state_incl</code> result below.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">fault_weight_state_incl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w"> </span><span class="no">incl</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="o">(</span><span class="no">fault_weight_state</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">fault_weight_state</span><span class="w"> </span><span class="no">sigma'</span><span class="o">)%</span><span class="no">R</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Following which <code class="language-plaintext highlighter-rouge">fault_weight_max</code> says that the weights of equivocating senders will be at most the sum of the weights of all the senders in a given state.
+It is easy to see that equality occurs when all senders are equivocating.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">fault_weight_max</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w">
+  </span><span class="o">(</span><span class="no">fault_weight_state</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">sum_weights</span><span class="w"> </span><span class="o">(</span><span class="no">set_map</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="no">sender</span><span class="w"> </span><span class="no">sigma</span><span class="o">))%</span><span class="no">R</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Lastly, the <code class="language-plaintext highlighter-rouge">equivocation_weight_compat</code> result which says that the weights of equivocating senders in a state \(\sigma_1\) is less than or equal to the weights of equivocating senders in a state formed by the union of \(\sigma_1\) and another state \(\sigma_2\), can be easily derived from the result <code class="language-plaintext highlighter-rouge">fault_weight_state_incl</code>:</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">equivocation_weight_compat</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">,</span><span class="w"> </span><span class="o">(</span><span class="no">fault_weight_state</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">fault_weight_state</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s1</span><span class="o">))%</span><span class="no">R</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The definition below says that a term of for some <code class="language-plaintext highlighter-rouge">sigma</code> and <code class="language-plaintext highlighter-rouge">c</code>, a term of <code class="language-plaintext highlighter-rouge">binEstimator sigma c</code> is a valid estimate condition.
+A term of <code class="language-plaintext highlighter-rouge">fault_tolerance_condition sigma</code> for some <code class="language-plaintext highlighter-rouge">sigma</code> is used to indicate that the weights of the equivocating senders is less than or equal to the threshold <code class="language-plaintext highlighter-rouge">t_full</code>.
+Both definitions will be used in the forming of an <code class="language-plaintext highlighter-rouge">Instance</code> declaration defined later.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">valid_estimate_condition</span><span class="w"> </span><span class="o">(</span><span class="no">c</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">C</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="no">sigma</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Prop</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="no">binEstimator</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">c</span><span class="pi">.</span><span class="w">
+</span><span class="k">Definition</span><span class="w"> </span><span class="no">fault_tolerance_condition</span><span class="w"> </span><span class="o">(</span><span class="no">sigma</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Prop</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="o">(</span><span class="no">fault_weight_state</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">proj1_sig</span><span class="w"> </span><span class="no">t_full</span><span class="o">)%</span><span class="no">R</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The lemma below states the easy result that if \(\sigma \subseteq \sigma '\), then if the <code class="language-plaintext highlighter-rouge">fault_tolerance_condition</code> property holds for \(\sigma '\), it also holds for \(\sigma\).</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">fault_tolerance_condition_subset</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w">
+  </span><span class="no">incl</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">fault_tolerance_condition</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">fault_tolerance_condition</span><span class="w"> </span><span class="no">sigma</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">hash_state</code> is a function that maps a state (which is a list of messages) to <code class="language-plaintext highlighter-rouge">justification_type</code> which is a list of hashes.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">hash_state</span><span class="w"> </span><span class="o">(</span><span class="no">sigma</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">justification_type</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="no">map</span><span class="w"> </span><span class="no">hash</span><span class="w"> </span><span class="no">sigma</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now we reach the inductive definition of the <code class="language-plaintext highlighter-rouge">protocol_state</code> dependent type.
+In the definition, we see that a <code class="language-plaintext highlighter-rouge">protocol_state</code> term is either a <code class="language-plaintext highlighter-rouge">protocol_state_nil</code> which has type <code class="language-plaintext highlighter-rouge">protocol_state state0</code> (recall that <code class="language-plaintext highlighter-rouge">state0</code> is an empty list), or a term formed from the <code class="language-plaintext highlighter-rouge">protocol_state_cons</code> constructor together with some other ingredients which ensure that some conditions are fulfilled before it can be valid protocol state.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Inductive</span><span class="w"> </span><span class="no">protocol_state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">protocol_state_nil</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">state0</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">protocol_state_cons</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="no">j</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w">
+     </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">j</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="no">valid_estimate_condition</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="no">j</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="no">In</span><span class="w"> </span><span class="o">(</span><span class="no">c</span><span class="o">,</span><span class="w"> </span><span class="no">v</span><span class="o">,</span><span class="w"> </span><span class="no">hash_state</span><span class="w"> </span><span class="no">j</span><span class="o">)</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="no">protocol_state</span><span class="w"> </span><span class="o">(</span><span class="no">set_remove</span><span class="w"> </span><span class="no">compare_eq_dec</span><span class="w"> </span><span class="o">(</span><span class="no">c</span><span class="o">,</span><span class="w"> </span><span class="no">v</span><span class="o">,</span><span class="w"> </span><span class="no">hash_state</span><span class="w"> </span><span class="no">j</span><span class="o">)</span><span class="w"> </span><span class="no">sigma'</span><span class="o">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="no">NoDup</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="no">fault_tolerance_condition</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+     </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">sigma'</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We now examine the ingredients required to form a term with <code class="language-plaintext highlighter-rouge">protocol_state_cons</code>.
+It requires a consensus value <code class="language-plaintext highlighter-rouge">c</code>, a validator <code class="language-plaintext highlighter-rouge">v</code>, a justification <code class="language-plaintext highlighter-rouge">j</code> (list of messages), and lastly protocol state <code class="language-plaintext highlighter-rouge">sigma'</code> (list of messages).
+Based on the ingredients above, it requires the proofs that:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">protocol_state j</code>: protocol state <code class="language-plaintext highlighter-rouge">j</code> is valid</li>
+  <li><code class="language-plaintext highlighter-rouge">valid_estimate_condition</code>: for the given <code class="language-plaintext highlighter-rouge">j</code>, the binary estimator is able to estimate the consensus value <code class="language-plaintext highlighter-rouge">c</code></li>
+  <li><code class="language-plaintext highlighter-rouge">In (c, v, hash_state j) sigma'</code>: the triple <code class="language-plaintext highlighter-rouge">(c, v, hash_state j)</code> is a element in the <code class="language-plaintext highlighter-rouge">sigma'</code> list</li>
+  <li><code class="language-plaintext highlighter-rouge">protocol_state (set_remove compare_eq_dec (c, v, hash_state j) sigma')</code>: the removal of <code class="language-plaintext highlighter-rouge">(c, v, hash_state j)</code> from <code class="language-plaintext highlighter-rouge">sigma'</code> is still a valid protocol state</li>
+  <li><code class="language-plaintext highlighter-rouge">NoDup sigma'</code>: the list of messages <code class="language-plaintext highlighter-rouge">sigma'</code> has no duplicates</li>
+  <li><code class="language-plaintext highlighter-rouge">fault_tolerance_condition sigma'</code>: the weight of equivocating senders in the protocol state <code class="language-plaintext highlighter-rouge">sigma'</code> is within the threshold (<code class="language-plaintext highlighter-rouge">t_full</code>)</li>
+</ul>
+
+<p>Thus the <code class="language-plaintext highlighter-rouge">protocol_state_cons</code> recursively checks that all the elements of a given <code class="language-plaintext highlighter-rouge">sigma'</code> fulfils the requirements of a valid protocol state to construct a term of <code class="language-plaintext highlighter-rouge">protocol_state sigma'</code> from <code class="language-plaintext highlighter-rouge">sigma'</code>.
+With <code class="language-plaintext highlighter-rouge">protocol_state</code> inductively defined, we can now reason on the properties of the terms of <code class="language-plaintext highlighter-rouge">protocol_state</code>.</p>
+
+<p>Starting with a simple result, <code class="language-plaintext highlighter-rouge">protocol_state_nodup</code> proves that for all protocol states <code class="language-plaintext highlighter-rouge">sigma</code> which can be successfully constructed as a <code class="language-plaintext highlighter-rouge">protocol_state sigma</code>, does not have any duplicates in the list.
+This result is trivial as <code class="language-plaintext highlighter-rouge">NoDup sigma</code> is required in the construction of <code class="language-plaintext highlighter-rouge">protocol_state sigma</code>.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="k">Lemma</span><span class="w"> </span><span class="no">protocol_state_nodup</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w">
+  </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">NoDup</span><span class="w"> </span><span class="no">sigma</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We can also show that if two protocol states are equal as sets, then if one satisfies the <code class="language-plaintext highlighter-rouge">fault_tolerance_condition</code> property, so does the other.
+This result is represented in <code class="language-plaintext highlighter-rouge">fault_tolerance_condition_set_eq</code>:</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">fault_tolerance_condition_set_eq</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w"> </span><span class="no">set_eq</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> 
+  </span><span class="no">fault_tolerance_condition</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">fault_tolerance_condition</span><span class="w"> </span><span class="no">sigma'</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Unsurprisingly, the <code class="language-plaintext highlighter-rouge">protocol_state</code> property is also “transferrable” between two protocol states which are equal as sets, presented as <code class="language-plaintext highlighter-rouge">set_eq_protocol_state</code> below.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="k">Lemma</span><span class="w"> </span><span class="no">set_eq_protocol_state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma</span><span class="o">,</span><span class="w">
+  </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">sigma'</span><span class="o">,</span><span class="w"> </span><span class="no">set_eq</span><span class="w"> </span><span class="no">sigma</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="no">NoDup</span><span class="w"> </span><span class="no">sigma'</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">sigma'</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The results of <code class="language-plaintext highlighter-rouge">about_prot_state</code> provides us another alternative way to validating protocol states.
+With the proof that two protocol states have the <code class="language-plaintext highlighter-rouge">protocol_state</code> property, <code class="language-plaintext highlighter-rouge">about_prot_state</code> allows for the construction of their union having the <code class="language-plaintext highlighter-rouge">protocol_state</code> property if we have the weights of equivocating senders of their union below the threshold.
+Thus this helps reduce the repetitive work of checking each element in the union of two valid protocol states to validate their union.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Lemma</span><span class="w"> </span><span class="no">about_prot_state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="o">(</span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="o">),</span><span class="w">
+  </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">protocol_state</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="o">(</span><span class="no">fault_weight_state</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">proj1_sig</span><span class="w"> </span><span class="no">t_full</span><span class="o">)%</span><span class="no">R</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="no">protocol_state</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">).</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We are now at line 418 of <code class="language-plaintext highlighter-rouge">Binary.v</code> out of the total 489 lines.
+In the next and final part, we will look at the definition of light nodes and also introduce some other new definitions, and eventually complete the reading of <code class="language-plaintext highlighter-rouge">Binary.v</code>.</p>
+
+  </article>
+
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname  = 'zunction';
+      var disqus_identifier = '/blog/2021/reading-casper-cbc-proofs-p3';
+      var disqus_title      = "Reading Casper CBC proofs - Part 3";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+
+    </div>
+
+    <!-- Footer -->
+
+    
+<footer class="fixed-bottom">
+  <div class="container mt-0">
+    &copy; Copyright 2021 Zhangsheng  Lai.
+    
+    
+    
+    Last updated: July 18, 2021.
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <!-- Bootsrap & MDB scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js" integrity="sha512-Mug9KHKmroQFMLm93zGrjhibM2z2Obg9l6qFG2qKjXEXkMp/VDkI4uju9m4QKPjWSwQ6O2qzZEnJDEeCw0Blcw==" crossorigin="anonymous"></script>
+
+  
+<!-- Mansory & imagesLoaded -->
+<script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script defer src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script defer src="/assets/js/mansory.js" type="text/javascript"></script>
+
+
+  
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+</html>

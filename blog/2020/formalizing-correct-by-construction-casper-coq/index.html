@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Zhangsheng  Lai | Formalizing Correct-by-Construction in Coq</title>
+<meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+<!-- Open Graph -->
+
+
+<!-- Bootstrap & MDB -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" integrity="sha512-RO38pBRxYH3SoOprtPTD86JFOclM51/XTIdEPh5j8sj4tp8jmQIx26twG52UaLi//hQldfrh7e51WzP9wuP32Q==" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/jwarby/jekyll-pygments-themes/master/github.css" />
+
+<!-- Styles -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐔</text></svg>">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<link rel="canonical" href="/blog/2020/formalizing-correct-by-construction-casper-coq/">
+
+<!-- JQuery -->
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+
+<!-- Theming-->
+
+  <script src="/assets/js/theme.js"></script>
+  <!-- Load DarkMode JS -->
+<script src="/assets/js/dark_mode.js"></script>
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73850109-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-73850109-1');
+  </script>
+
+
+
+
+    
+<!-- MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+    <script src="/assets/js/distillpub/template.v2.js"></script>
+    <script src="/assets/js/distillpub/transforms.v2.js"></script>
+    
+  </head>
+
+  <d-front-matter>
+    <script async type="text/json">{
+      "title": "Formalizing Correct-by-Construction in Coq",
+      "description": "a formalization of CBC Casper using the Coq proof assistant that includes a model of the consensus protocol and proofs of safety and non-triviality protocol properties.",
+      "published": "August 17, 2020",
+      "authors": [
+        
+        {
+          "author": "Elaine Li",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Runtime Verification",
+              "url": ""
+            }
+          ]
+        },
+        
+        {
+          "author": "Traian Serbănută",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Runtime Verification",
+              "url": ""
+            }
+          ]
+        },
+        
+        {
+          "author": "Denisa Diaconescu",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Runtime Verification",
+              "url": ""
+            }
+          ]
+        },
+        
+        {
+          "author": "Vlad Zamfir",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Ethereum Research",
+              "url": ""
+            }
+          ]
+        },
+        
+        {
+          "author": "Grigore Rosu",
+          "authorURL": "",
+          "affiliations": [
+            {
+              "name": "Runtime Verification",
+              "url": ""
+            }
+          ]
+        }
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+
+    <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+    <div class="container">
+      
+      <a class="navbar-brand title font-weight-lighter" href="/">
+       <span class="font-weight-bold">Zhangsheng</span>   Lai
+      </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              about
+              
+            </a>
+          </li>
+          
+          <!-- Blog -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/blog/">
+              blog
+              
+            </a>
+          </li>
+          
+          <!-- Other pages -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/projects/">
+                projects
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/publications/">
+                publications
+                
+              </a>
+          </li>
+          
+          
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="/teaching/">
+                teaching
+                
+              </a>
+          </li>
+          
+          
+          
+            <div class = "toggle-container">
+              <a id = "light-toggle">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+              </a>
+            </div>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+
+    <!-- Content -->
+
+    <div class="post distill">
+
+      <d-title>
+        <h1>Formalizing Correct-by-Construction in Coq</h1>
+        <p>a formalization of CBC Casper using the Coq proof assistant that includes a model of the consensus protocol and proofs of safety and non-triviality protocol properties.</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <p>The Correct-by-Construction (CBC) Casper is family of consensus protocol which is <em>partially specified</em>; its specification does not cover synchrony assumptions, liveness, validator rotation, incentive mechanisms, proof-of-stake, light clients, scalability, or message source authentication <d-cite key="minimalcbccasper"></d-cite>. 
+In the description of the minimal CBC Casper in <d-cite key="minimalcbccasper"></d-cite>, it works with the following five parameters:</p>
+
+<ol>
+  <li><strong>Validator names</strong>: names of the participants who help to validate and form the consensus</li>
+  <li><strong>Validator weights</strong>: a positive real number assigned to each validator used to measure equivocations of each validator</li>
+  <li><strong>Byzantine-fault-tolerance threshold</strong>: a value strictly smaller than the sum of all the validator weights to denote its tolerance for equivocations</li>
+  <li><strong>Consensus values</strong>: the set of possible decisions which the involved validators jointly make</li>
+  <li><strong>Estimator</strong>: a function which returns a set of possible consensus based on a given protocol state</li>
+</ol>
+
+<p>Note: for a more in-depth context of the background, it is recommended to read: <strong>Introducing the “Minimal CBC Casper” Family of Consensus Protocols</strong> <d-cite key="minimalcbccasper"></d-cite></p>
+
+<p>With these parameters, the Coq proof assistant is used to model the minimal CBC Casper consensus protocol, which is then used to formally verify the desired properties of the protocol: safety and non-triviality.
+The <strong>safety</strong> property ensures that when there are not too many equivocating nodes, all participating nodes decide on the <em>same</em> consensus value.
+The <strong>non-triviality</strong> property says that it is always possible for participating nodes to make inconsistent decisions on consensus values.</p>
+
+<p>The type classes system in Coq <d-cite key="Castran2012AGI"></d-cite> is used to define the abstract hierarchy of the three levels of abstraction: <strong>partial order</strong> (<a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/master/CBC/Protocol.v#L9"><code class="language-plaintext highlighter-rouge">PartialOrder</code></a>), <strong>partial order with non-local confluence</strong> (<a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/master/CBC/Protocol.v#L18"><code class="language-plaintext highlighter-rouge">PartialOrderNonLCish</code></a>), and <strong>a global state transition system</strong> (<a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/master/CBC/Protocol.v#L25"><code class="language-plaintext highlighter-rouge">CBC_protocol_eq</code></a>?).</p>
+
+<p>In Fig. 1 below which was provided in the paper, it depicts the relationships between the three abstractions and the proven properties for each abstraction.
+From the bottom we have the <code class="language-plaintext highlighter-rouge">PartialOrder</code> type class which is sufficient for the <em>safety</em> property to be derived.
+The <code class="language-plaintext highlighter-rouge">PartialOrder</code> type class can then be extended to <code class="language-plaintext highlighter-rouge">PartialOrderNonLCish</code> and <code class="language-plaintext highlighter-rouge">CBC_protocol_eq</code> type class, with the former exhibiting the <em>weak non-triviality</em> property.
+Both <code class="language-plaintext highlighter-rouge">FullNode</code> and <code class="language-plaintext highlighter-rouge">LightNode</code> are two instances of CBC Casper and they have the <em>strong non-triviality</em> property.</p>
+
+<style> 
+            .fuu {
+                width:auto;
+                text-align:center;
+                padding:20px;
+            }
+            img {
+                width: 75%;
+                height: 75%;
+                object-fit: contain;
+            }
+        </style>
+
+<div class="fuu">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded " src="/assets/img/typeclass_hierarchy.png" alt="" title="figure 1 from paper" />
+    </div>
+</div>
+<div class="caption">
+Diagram of relationship between the three abstractions and the protocol properties from the paper <d-cite key="9169468"></d-cite>
+</div>
+
+<p><strong>Mutual recursion.</strong> 
+In this section, they observe that protocol states and messages are mutually and recursively defined on each other.
+A more detailed explanation of protocol states and messages on their mutual recursion can be found <a href="https://zunction.github.io/blog/2021/reading-casper-cbc-proofs-p2/">here</a>.
+The way protocol states and messages are defined presents a challenge on how to model it in Coq.
+One would consider using <a href="https://coq.inria.fr/refman/language/core/inductive.html#mutually-inductive-types">mutually defined inductive types</a> to mutually define protocol states and messages; defining equality for them will be <a href="https://stackoverflow.com/questions/23205044/the-decidable-equality-definitions-for-mutually-defined-inductive-types">tedious</a>.
+These difficulties are also carried forward to the properties which heavily rely on how our data is defined.
+An important observation made by the authors of the paper is: <em>the mutual recursive property of protocol states and messages do not contribute to the safety and non-triviality properties</em> and it suffices to represent adding messages to states as a reflexive, transitive reachability relation on states, and how they relate to the protocol states.</p>
+
+<p><strong>Strong non-triviality.</strong>
+Non-triviality describes the existences of a protocol state that can reach two future protocol states which <strong>do not</strong> share a common future.</p>
+
+<div class="fuu">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded " src="/assets/img/nontriviality.JPG" alt="" title="non-triviality" />
+    </div>
+</div>
+<div class="caption">
+Non-triviality means such a black protocol state exists.
+</div>
+
+<p>The authors then extends the existential statement of non-triviality to a universal statement: using the reachability relation, for every protocol state \(s_1\), there exists a protocol state \(s_2\) reachable from \(s_1\) in one step and a protocol state \(s_3\) reachable from \(s_1\) in an arbitrary number of steps, such that \(s_1\) and \(s_3\) share a common future, but \(s_2\) and \(s_3\) do not.
+This stronger property is called <strong>strong non-triviality</strong>, and can be derived from <code class="language-plaintext highlighter-rouge">FullNode</code> and <code class="language-plaintext highlighter-rouge">LightNode</code> instances.</p>
+
+<div class="fuu">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded " src="/assets/img/snontriviality.JPG" alt="" title="strong non-triviality" />
+    </div>
+</div>
+<div class="caption">
+The phenomenon above applies to all the protocol states
+</div>
+
+<p><strong>Safety proof</strong></p>
+
+<p>Within the <a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/master/CBC/Protocol.v"><code class="language-plaintext highlighter-rouge">Protocol.v</code></a> mentioned in their paper, it presents the <a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/master/CBC/Protocol.v#L341">safety proof</a> based on the <code class="language-plaintext highlighter-rouge">CBC_protocol_eq</code> class:</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Theorem</span><span class="w"> </span><span class="no">n_consistency_consensus</span><span class="w"> </span><span class="err">`</span><span class="o">{</span><span class="no">CBC_protocol_eq</span><span class="o">}</span><span class="w"> </span><span class="p">:</span><span class="w">
+  </span><span class="kr">forall</span><span class="w"> </span><span class="no">ls</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">list</span><span class="w"> </span><span class="no">pstate</span><span class="o">,</span><span class="w">
+    </span><span class="o">(</span><span class="no">equivocation_weight</span><span class="w"> </span><span class="o">(</span><span class="no">fold_right</span><span class="w"> </span><span class="no">state_union</span><span class="w"> </span><span class="no">state0</span><span class="w"> 
+    </span><span class="o">(</span><span class="no">map</span><span class="w"> </span><span class="o">(</span><span class="kr">fun</span><span class="w"> </span><span class="no">ps</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="no">proj1_sig</span><span class="w"> </span><span class="no">ps</span><span class="o">)</span><span class="w"> </span><span class="no">ls</span><span class="o">))</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">proj1_sig</span><span class="w"> </span><span class="no">t</span><span class="o">)%</span><span class="no">R</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> 
+    </span><span class="no">consensus_value_consistency</span><span class="w"> </span><span class="no">ls</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Strong non-triviality proof</strong></p>
+
+<p>As for the proof of strong non-triviality, which is defined as the following,</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Definition</span><span class="w"> </span><span class="no">strong_nontriviality</span><span class="w"> </span><span class="o">{</span><span class="no">C</span><span class="w"> </span><span class="no">V</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="o">}</span><span class="w"> </span><span class="err">`</span><span class="o">{</span><span class="no">PS</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">ProtocolState</span><span class="w"> </span><span class="no">C</span><span class="w"> </span><span class="no">V</span><span class="o">}</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="kr">forall</span><span class="w"> </span><span class="o">(</span><span class="no">s1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">pstate</span><span class="w"> </span><span class="no">C</span><span class="w"> </span><span class="no">V</span><span class="o">),</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="o">(</span><span class="no">s2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">pstate</span><span class="w"> </span><span class="no">C</span><span class="w"> </span><span class="no">V</span><span class="o">),</span><span class="w"> 
+    </span><span class="no">next_future</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">/\</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="o">(</span><span class="no">s3</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">pstate</span><span class="w"> </span><span class="no">C</span><span class="w"> </span><span class="no">V</span><span class="o">),</span><span class="w"> 
+      </span><span class="no">yes_common_future</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s3</span><span class="w"> </span><span class="o">/\</span><span class="w"> </span><span class="no">no_common_future</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+<p>as shown in Fig 1, this proof of this property are found in their <a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/e32e74997d8fd53b44e8e87add22e9ee1de5d175/CBC/LightNode.v#L2240"><code class="language-plaintext highlighter-rouge">LightNode</code></a> and <a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/e32e74997d8fd53b44e8e87add22e9ee1de5d175/CBC/FullNode.v#L1326"><code class="language-plaintext highlighter-rouge">FullNode</code></a> implementations.
+In their paper, the sketch a <em>constructive</em> proof of strong non-triviality by first introducing the notion of a <strong>pivotal node</strong>: an additional equivocating node such that the union<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> of the resulting two protocol states would exceed the fault weight threshold.
+Using the existence of such a pivotal node, it is able to construct a pair of equivocating messages for the pivotal node, to construct future nodes such that it satisfies the strong non-triviality illustration shown above.</p>
+
+<p>This concludes the key points of the paper, but there is still more to be understood before we can fully appreciate the specifications of the theorems and properties.
+We shall now go through type classes formalization found in <a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/master/CBC/Protocol.v"><code class="language-plaintext highlighter-rouge">Protocol.v</code></a>, and with that prove better clarity as to what is being done in this paper.</p>
+
+<p>Below we have the declarations of the type classes which denote the three different levels of abstractions. 
+The first two classes following the <a href="https://en.wikipedia.org/wiki/Partially_ordered_set#Formal_definition">definition of partial order </a>, although it lacks the antisymmetry condition.
+Following the constructiveness of the Calculus of Inductive Construction type theory implemented in Coq, proof of decidable equality of the data is required and a relation between two elements is implemented as a <a href="https://en.wikipedia.org/wiki/Dependent_type">dependent type</a> instead of a boolean predicate.
+Extending a partial order to one with non-local confluence, the  <code class="language-plaintext highlighter-rouge">'{PartialOrder A}</code> is a <em>class  constrain</em> - the class <code class="language-plaintext highlighter-rouge">PartialOrderNonLCish</code> can only be constructed from a <code class="language-plaintext highlighter-rouge">PartialOrder A</code> class.</p>
+
+<p><strong>Partial order type class</strong></p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Class</span><span class="w"> </span><span class="no">PartialOrder</span><span class="w"> </span><span class="o">(</span><span class="no">A</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="o">)</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="o">{</span><span class="w"> </span><span class="no">A_eq_dec</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="o">(</span><span class="no">a1</span><span class="w"> </span><span class="no">a2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">A</span><span class="o">),</span><span class="w"> </span><span class="o">{</span><span class="no">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">a2</span><span class="o">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">{</span><span class="no">a1</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="no">a2</span><span class="o">}</span><span class="p">;</span><span class="w">
+    </span><span class="no">A_inhabited</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="o">(</span><span class="no">a0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">A</span><span class="o">),</span><span class="w"> </span><span class="no">True</span><span class="p">;</span><span class="w"> 
+    </span><span class="no">A_rel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="p">;</span><span class="w">
+    </span><span class="no">A_rel_refl</span><span class="w"> </span><span class="p">:</span><span class="o">&gt;</span><span class="w"> </span><span class="no">Reflexive</span><span class="w"> </span><span class="no">A_rel</span><span class="p">;</span><span class="w">
+    </span><span class="no">A_rel_trans</span><span class="w"> </span><span class="p">:</span><span class="o">&gt;</span><span class="w"> </span><span class="no">Transitive</span><span class="w"> </span><span class="no">A_rel</span><span class="p">;</span><span class="w">
+  </span><span class="o">}.</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Partial order with non-local confluence type class</strong></p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Class</span><span class="w"> </span><span class="no">PartialOrderNonLCish</span><span class="w"> </span><span class="o">(</span><span class="no">A</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="o">)</span><span class="w"> </span><span class="err">`</span><span class="o">{</span><span class="no">PartialOrder</span><span class="w"> </span><span class="no">A</span><span class="o">}</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="o">{</span><span class="w"> </span><span class="no">no_local_confluence_ish</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="o">(</span><span class="no">a</span><span class="w"> </span><span class="no">a1</span><span class="w"> </span><span class="no">a2</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">A</span><span class="o">),</span><span class="w">
+        </span><span class="no">A_rel</span><span class="w"> </span><span class="no">a</span><span class="w"> </span><span class="no">a1</span><span class="w"> </span><span class="o">/\</span><span class="w"> </span><span class="no">A_rel</span><span class="w"> </span><span class="no">a</span><span class="w"> </span><span class="no">a2</span><span class="w"> </span><span class="o">/\</span><span class="w">
+        </span><span class="o">~</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="o">(</span><span class="no">a'</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">A</span><span class="o">),</span><span class="w"> </span><span class="no">A_rel</span><span class="w"> </span><span class="no">a1</span><span class="w"> </span><span class="no">a'</span><span class="w"> </span><span class="o">/\</span><span class="w"> </span><span class="no">A_rel</span><span class="w"> </span><span class="no">a2</span><span class="w"> </span><span class="no">a'</span><span class="p">;</span><span class="w">
+  </span><span class="o">}.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The third abstraction is one with the least abstractions as it uses the five parameters of a minimal CBC Casper protocol.
+But as we will realise, the class <code class="language-plaintext highlighter-rouge">CBC_protocol_eq</code> contains far more than those five parameters.
+Subtle but salient details which are used when working proofs on paper and pen are required to be mechanised before they can be used. 
+In the declaration of the validators and consensus values, we them to be <a href="https://github.com/runtimeverification/casper-cbc-proofs/blob/e32e74997d8fd53b44e8e87add22e9ee1de5d175/Lib/Preamble.v#L382"><code class="language-plaintext highlighter-rouge">StrictlyComparable</code></a>: an inhabited type with a strictly ordered comparison operator that is reflexive and transitive.
+For the Byzantine-fault-tolerance threshold (<code class="language-plaintext highlighter-rouge">t</code>), the <code class="language-plaintext highlighter-rouge">suff_val</code> shows the existence of a list of validators whose sum of weights cross the threshold.
+This ensures that the fault tolerance threshold is not trivially satisfied.
+For estimator <code class="language-plaintext highlighter-rouge">E</code> which is expressed as a dependent type, we show that the function is total.
+That is to say, for any state <code class="language-plaintext highlighter-rouge">s</code> that is provided to <code class="language-plaintext highlighter-rouge">E</code>, there is a consensus value <code class="language-plaintext highlighter-rouge">c</code> such that the type <code class="language-plaintext highlighter-rouge">E s c</code> is inhabited i.e. the estimator estimates <code class="language-plaintext highlighter-rouge">c</code> when given <code class="language-plaintext highlighter-rouge">s</code>.</p>
+
+<p><strong>CBC protocol with equality type class</strong></p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Class</span><span class="w"> </span><span class="no">CBC_protocol_eq</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+   </span><span class="o">{</span><span class="w">
+      </span><span class="c">(** 1 **)</span><span class="w">
+      </span><span class="no">validators</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="p">;</span><span class="w">
+      </span><span class="no">about_validators</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">StrictlyComparable</span><span class="w"> </span><span class="no">validators</span><span class="p">;</span><span class="w">
+      </span><span class="c">(** 2 **)</span><span class="w">
+      </span><span class="no">weight</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">validators</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">{</span><span class="no">r</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="no">r</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="o">)%</span><span class="no">R</span><span class="o">}</span><span class="p">;</span><span class="w">
+      </span><span class="c">(** 3 **)</span><span class="w">
+      </span><span class="no">t</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">{</span><span class="no">r</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="no">r</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="o">)%</span><span class="no">R</span><span class="o">}</span><span class="p">;</span><span class="w">
+      </span><span class="no">suff_val</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="no">vs</span><span class="o">,</span><span class="w"> </span><span class="no">NoDup</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="o">/\</span><span class="w"> </span><span class="o">((</span><span class="no">fold_right</span><span class="w"> </span><span class="o">(</span><span class="kr">fun</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="no">r</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">(</span><span class="no">proj1_sig</span><span class="w"> </span><span class="o">(</span><span class="no">weight</span><span class="w"> </span><span class="no">v</span><span class="o">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="no">r</span><span class="o">)%</span><span class="no">R</span><span class="o">)</span><span class="w"> </span><span class="mi">0</span><span class="o">%</span><span class="no">R</span><span class="o">)</span><span class="w"> </span><span class="no">vs</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">(</span><span class="no">proj1_sig</span><span class="w"> </span><span class="no">t</span><span class="o">))%</span><span class="no">R</span><span class="p">;</span><span class="w">
+      </span><span class="c">(** 4 **)</span><span class="w">
+      </span><span class="no">consensus_values</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="p">;</span><span class="w">
+      </span><span class="no">about_consensus_values</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">StrictlyComparable</span><span class="w"> </span><span class="no">consensus_values</span><span class="p">;</span><span class="w">
+      </span><span class="c">(** 5 **)</span><span class="w">
+      </span><span class="no">E</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">consensus_values</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="p">;</span><span class="w">
+      </span><span class="no">estimator_total</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s</span><span class="o">,</span><span class="w"> </span><span class="kp">exists</span><span class="w"> </span><span class="no">c</span><span class="o">,</span><span class="w"> </span><span class="no">E</span><span class="w"> </span><span class="no">s</span><span class="w"> </span><span class="no">c</span><span class="p">;</span><span class="w">
+      
+      </span><span class="c">(** Others **)</span><span class="w">
+      </span><span class="no">state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="p">;</span><span class="w">
+      </span><span class="no">about_state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">StrictlyComparable</span><span class="w"> </span><span class="no">state</span><span class="p">;</span><span class="w">
+      </span><span class="no">state0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="p">;</span><span class="w">
+      </span><span class="no">state_eq</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="p">;</span><span class="w">
+      </span><span class="no">state_union</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">state</span><span class="p">;</span><span class="w">
+      </span><span class="no">state_union_comm</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">,</span><span class="w"> </span><span class="no">state_eq</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s1</span><span class="o">)</span><span class="p">;</span><span class="w">
+
+      </span><span class="no">reach</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="p">;</span><span class="w">
+      </span><span class="no">reach_refl</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s</span><span class="w"> </span><span class="no">s</span><span class="p">;</span><span class="w">
+      </span><span class="no">reach_trans</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s3</span><span class="p">;</span><span class="w">
+      </span><span class="no">reach_union</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">)</span><span class="p">;</span><span class="w">
+      </span><span class="no">reach_morphism</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="o">,</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">state_eq</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s3</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">reach</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s3</span><span class="p">;</span><span class="w">
+
+      </span><span class="no">prot_state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kr">Prop</span><span class="p">;</span><span class="w">
+      </span><span class="no">about_state0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">prot_state</span><span class="w"> </span><span class="no">state0</span><span class="p">;</span><span class="w">
+
+      </span><span class="no">equivocation_weight</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">state</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">R</span><span class="p">;</span><span class="w">
+      </span><span class="no">equivocation_weight_compat</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">,</span><span class="w"> </span><span class="o">(</span><span class="no">equivocation_weight</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">equivocation_weight</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="no">s1</span><span class="o">))%</span><span class="no">R</span><span class="p">;</span><span class="w">
+      </span><span class="no">about_prot_state</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">forall</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">,</span><span class="w"> </span><span class="no">prot_state</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">prot_state</span><span class="w"> </span><span class="no">s2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+                                  </span><span class="o">(</span><span class="no">equivocation_weight</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="no">proj1_sig</span><span class="w"> </span><span class="no">t</span><span class="o">)%</span><span class="no">R</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="no">prot_state</span><span class="w"> </span><span class="o">(</span><span class="no">state_union</span><span class="w"> </span><span class="no">s1</span><span class="w"> </span><span class="no">s2</span><span class="o">)</span><span class="p">;</span><span class="w">
+   </span><span class="o">}.</span><span class="w">
+</span></code></pre></div></div>
+<p>For the rest of the declarations which is below <code class="language-plaintext highlighter-rouge">(** Others **)</code>, it specifies four things: state, reach, protocol state and equivocation.</p>
+
+<p><strong>State.</strong>
+The <code class="language-plaintext highlighter-rouge">state</code> type is data which <code class="language-plaintext highlighter-rouge">StrictlyComparable</code>, with an initial state <code class="language-plaintext highlighter-rouge">state0</code>.
+The <code class="language-plaintext highlighter-rouge">state_eq</code> is used to deduce the equality of two states, and two states can be “combined” together to form another state with the commutative <code class="language-plaintext highlighter-rouge">state_union</code> operator.</p>
+
+<p><strong>Reach.</strong>
+The notion of <code class="language-plaintext highlighter-rouge">reach</code> is to describe the relation between two states.
+On top of requiring the <code class="language-plaintext highlighter-rouge">reach</code> in a <code class="language-plaintext highlighter-rouge">CBC_protocol_eq</code> class to be reflexive and transitive (which is what it means to be <code class="language-plaintext highlighter-rouge">StrictlyComparable</code>), it requires a state to <code class="language-plaintext highlighter-rouge">reach</code> any state which is a union of itself with another state (<code class="language-plaintext highlighter-rouge">reach_union</code>), and the reachability of a state can be extended to other states that are equal to the state which it reaches (<code class="language-plaintext highlighter-rouge">reach_morphism</code>).</p>
+
+<p><strong>Protocol state.</strong>
+The <code class="language-plaintext highlighter-rouge">prot_state</code> predicate is used to verify when a generic state is a protocol state.
+For a state to be a protocol state we require the justification of all messages in the state to be a subset of the state for it to be a protocol state (c.f Definition 2.7 <d-cite key="minimalcbccasper"></d-cite>).
+The <code class="language-plaintext highlighter-rouge">about_state0</code> term verifies that <code class="language-plaintext highlighter-rouge">state0</code> is a protocol state, which will then be used as the preliminary protocol state.</p>
+
+<p><strong>Equivocation.</strong>
+Within the CBC protocol, <code class="language-plaintext highlighter-rouge">equivocation_weight</code> computes the sum of the weights of equivocating senders in the given state, and the weight of a state is less than or equal to the weight of a state formed from the union of itself with another state (<code class="language-plaintext highlighter-rouge">equivocation_weight_compat</code>).
+Lastly, it establishes this property (<code class="language-plaintext highlighter-rouge">about_prot_state</code>): for any union of two states to be a protocol state, we first need the two states themselves to be protocol states, followed by the equivocation weight of their union to be within the threshold. 
+This is useful as reduces the checking: from checking directly with <code class="language-plaintext highlighter-rouge">prot_state</code> on the union to just checking if the equivocation weight of the union is within the threshold.</p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>As we read through the two pages of <d-cite key="9169468"></d-cite>, there are some things that can be observed.
+When doing formal verification, one has to be clear on what needs to be verified, and based on it build a formal model and representation that is able to specify the property to be verified.
+While ideally it is nice to be able to model all aspects of our system, this might not be possible and identifying the crucial properties of the system to model is sufficient.
+Doing formal verification in Coq allows for the extraction of the formally verified algorithm to Haskell or OCaml that can be used.
+For this work, while the properties are proven, but is it possible for us to practically extract the algorithms derived from the proofs and directly apply it to use?
+It seems to make more sense if we are able to make use of the formal verification in the implementation instead of formally verifying it and implementing it separately.</p>
+
+<p><em>Posted on 18 July 2021</em></p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>what does it mean by union of protocol states and when do we need to union protocol states together? <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <!-- Footer -->
+
+    
+<footer class="fixed-bottom">
+  <div class="container mt-0">
+    &copy; Copyright 2021 Zhangsheng  Lai.
+    
+    
+    
+    Last updated: July 18, 2021.
+    
+  </div>
+</footer>
+
+
+
+  </body>
+
+  <d-bibliography src="/assets/bibliography/cbc_casper.bib">
+  </d-bibliography>
+
+</html>
